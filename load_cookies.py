@@ -152,14 +152,16 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"error load cookies: {e}")
 
+    wait = WebDriverWait(driver, 50)  
+
     try:
-        wait = WebDriverWait(driver, 10)  
+        # wait = WebDriverWait(driver, 20)  
 
         elems = wait.until(EC.presence_of_all_elements_located(
             (By.CSS_SELECTOR, ".shopee-search-item-result__item .line-clamp-2.break-words.min-h-\\[2\\.5rem\\].text-sm")
         ))
 
-        titles = [elem.text.strip() for elem in elems[:10] if elem.text.strip()]
+        titles = [elem.text.strip() for elem in elems[:60] if elem.text.strip()]
 
         df1 = pd.DataFrame({'index_': np.arange(1, len(titles) + 1), 'title': titles})
         print(df1)  
