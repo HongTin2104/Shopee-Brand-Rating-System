@@ -29,6 +29,7 @@ if __name__ == '__main__':
         # Dừng chương trình chờ người dùng nhấn Enter
         input()
         
+        
         # Lấy và lưu cookies
         cookies = driver.get_cookies()
         pickle.dump(cookies, open("cookies.pkl", "wb"))
